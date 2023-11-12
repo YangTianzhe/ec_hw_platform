@@ -20,7 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成定时器中断">
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成串口接收中断的结构搭建，待填入详细代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.c" afterDir="false" />
     </list>
@@ -112,7 +112,7 @@
       <workItem from="1699796650750" duration="266000" />
       <workItem from="1699796979479" duration="52000" />
       <workItem from="1699797354914" duration="22000" />
-      <workItem from="1699798155938" duration="3665000" />
+      <workItem from="1699798155938" duration="4036000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699801418852</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="完成串口接收中断的结构搭建，待填入详细代码">
+      <option name="closed" value="true" />
+      <created>1699801905273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699801905273</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +173,7 @@
     <MESSAGE value="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复" />
     <MESSAGE value="完成CANFilterInit" />
     <MESSAGE value="完成定时器中断" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成定时器中断" />
+    <MESSAGE value="完成串口接收中断的结构搭建，待填入详细代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成串口接收中断的结构搭建，待填入详细代码" />
   </component>
 </project>

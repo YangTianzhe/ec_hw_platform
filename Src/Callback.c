@@ -35,3 +35,17 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
         ;
     }
 }
+
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    CAN_RxHeaderTypeDef rx_header;
+    uint8_t rx_data[8];
+
+    HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,&rx_header,rx_data);
+
+    //motorsCanRxMsgHandle(hcan,rx_header,rx_data);
+    //if(ultra_cap.canRxMsgCheck(hcan,rx_header))
+    //{
+    //    ultra_cap.canRxMsgCallback(hcan, rx_header, rx_data);
+    //}
+}
