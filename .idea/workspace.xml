@@ -20,31 +20,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
+      <change afterPath="$PROJECT_DIR$/Inc/my_can.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Src/my_can.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32F0xx/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F0xx_HAL_Driver/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/main.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/stm32f0xx_hal_conf.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/stm32f0xx_it.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDK-ARM/startup_stm32f407xx.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/STM32F030F4PX_FLASH.ld" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/stm32f0xx_hal_msp.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/stm32f0xx_it.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/syscalls.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/sysmem.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/system_stm32f0xx.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Startup/startup_stm32f030f4px.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec_hw_platform.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/ec_hw_platform.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +50,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2Y4tOdZCYc1kaaC6QuedLFQKPFc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,6 +66,11 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "E:/RM/Project/ec_hw_platform",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.cidr.embedded.config",
     "vue.rearranger.settings.migration": "true"
   }
@@ -112,8 +102,17 @@
       <workItem from="1699796650750" duration="266000" />
       <workItem from="1699796979479" duration="52000" />
       <workItem from="1699797354914" duration="22000" />
-      <workItem from="1699798155938" duration="2000" />
+      <workItem from="1699798155938" duration="1493000" />
     </task>
+    <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
+      <option name="closed" value="true" />
+      <created>1699798269226</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699798269226</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,5 +123,20 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复" />
   </component>
 </project>
