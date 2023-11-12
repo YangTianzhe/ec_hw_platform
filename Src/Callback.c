@@ -19,3 +19,19 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         //Remote.Handle();
     }
 }
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+    if(huart->Instance==USART3) //SBUS/DBUS RemoteControl
+    {
+        ;
+    }
+    if(huart->Instance==USART1) //UART2 1000000bps
+    {
+        ;
+    }
+    if(huart->Instance==USART6) //UART1 115200bps
+    {
+        ;
+    }
+}
