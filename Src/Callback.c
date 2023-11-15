@@ -4,6 +4,10 @@
 
 #include "main.h"
 #include "tim.h"
+#include "usart.h"
+#include "RemoteControl.h"
+
+extern volatile uint8_t sbus_rx_buffer[RC_FRAME_LENGTH];
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -24,7 +28,9 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
     if(huart->Instance==USART3) //SBUS/DBUS RemoteControl
     {
-        ;
+        RemoteControlDataReceive();
+        HAL_UARTEx_ReceiveToIdle_DMA(&huart3,(uint8_t*) sbus_rx_buffer,RC_FRAME_LENGTH);
+        RemoteControlDataUtilize();
     }
     if(huart->Instance==USART1) //UART2 1000000bps
     {
