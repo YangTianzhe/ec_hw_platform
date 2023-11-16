@@ -3,7 +3,7 @@
 //
 
 #include "main.h"
-#include "RemoteControl.h"
+#include "../Inc/RemoteControl.h"
 
 volatile uint8_t sbus_rx_buffer[RC_FRAME_LENGTH];
 static RC_Ctl_t RC_CtrlData;

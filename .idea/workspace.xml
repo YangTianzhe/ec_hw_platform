@@ -20,20 +20,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="增加了MainControlLoop框架，但还未写具体代码">
-      <change afterPath="$PROJECT_DIR$/Inc/RemoteControl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Src/RemoteControl.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/OCD_ec_hw_platform.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/OCD_ec_hw_platform.xml" afterDir="false" />
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="写完了遥控部分的代码，但是还未进行测试。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/dma.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/dma.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/usart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec_hw_platform.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/ec_hw_platform.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/RemoteControl.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/RemoteControl.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/my_can.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/my_can.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +88,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.cidr.embedded.config&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -146,7 +142,10 @@
       <workItem from="1699797354914" duration="22000" />
       <workItem from="1699798155938" duration="4873000" />
       <workItem from="1700055485906" duration="10035000" />
-      <workItem from="1700066377465" duration="1000" />
+      <workItem from="1700066377465" duration="76000" />
+      <workItem from="1700109678152" duration="299000" />
+      <workItem from="1700110073390" duration="2180000" />
+      <workItem from="1700114904495" duration="3771000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -196,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699802932292</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="写完了遥控部分的代码，但是还未进行测试。">
+      <option name="closed" value="true" />
+      <created>1700066443279</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700066443279</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +233,7 @@
     <MESSAGE value="完成串口接收中断的结构搭建，待填入详细代码" />
     <MESSAGE value="完成CAN接受中断" />
     <MESSAGE value="增加了MainControlLoop框架，但还未写具体代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了MainControlLoop框架，但还未写具体代码" />
+    <MESSAGE value="写完了遥控部分的代码，但是还未进行测试。" />
+    <option name="LAST_COMMIT_MESSAGE" value="写完了遥控部分的代码，但是还未进行测试。" />
   </component>
 </project>

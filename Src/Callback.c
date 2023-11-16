@@ -5,7 +5,7 @@
 #include "main.h"
 #include "tim.h"
 #include "usart.h"
-#include "RemoteControl.h"
+#include "../Inc/RemoteControl.h"
 
 extern volatile uint8_t sbus_rx_buffer[RC_FRAME_LENGTH];
 

@@ -29,8 +29,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "my_can.h"
-#include "RemoteControl.h"
+#include "../../Inc/my_can.h"
+#include "../../Inc/RemoteControl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
