@@ -420,11 +420,6 @@
               <FilePath>../Core/Src/dma.c</FilePath>
             </File>
             <File>
-              <FileName>iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/iwdg.c</FilePath>
-            </File>
-            <File>
               <FileName>spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/spi.c</FilePath>
@@ -538,11 +533,6 @@
               <FileName>stm32f4xx_hal_can.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hal_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_spi.c</FileName>

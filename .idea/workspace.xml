@@ -20,16 +20,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="写完了遥控部分的代码，但是还未进行测试。">
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="将.h的路径改为相对路径，在uvision中完成编译烧录">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists - 副本.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists - 副本.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/iwdg.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/iwdg.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/usart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_iwdg.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/RemoteControl.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/RemoteControl.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/my_can.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/my_can.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ec_hw_platform.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/ec_hw_platform.ioc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +106,11 @@
   }
 }</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.STlink ec_hw_platform.elf">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ec_hw_platform.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ec_hw_platform" TARGET_NAME="ec_hw_platform.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ec_hw_platform" RUN_TARGET_NAME="ec_hw_platform.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -145,7 +163,8 @@
       <workItem from="1700066377465" duration="76000" />
       <workItem from="1700109678152" duration="299000" />
       <workItem from="1700110073390" duration="2180000" />
-      <workItem from="1700114904495" duration="3771000" />
+      <workItem from="1700114904495" duration="4121000" />
+      <workItem from="1700144020768" duration="4518000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -203,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700066443279</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="将.h的路径改为相对路径，在uvision中完成编译烧录">
+      <option name="closed" value="true" />
+      <created>1700119712860</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700119712860</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +261,7 @@
     <MESSAGE value="完成CAN接受中断" />
     <MESSAGE value="增加了MainControlLoop框架，但还未写具体代码" />
     <MESSAGE value="写完了遥控部分的代码，但是还未进行测试。" />
-    <option name="LAST_COMMIT_MESSAGE" value="写完了遥控部分的代码，但是还未进行测试。" />
+    <MESSAGE value="将.h的路径改为相对路径，在uvision中完成编译烧录" />
+    <option name="LAST_COMMIT_MESSAGE" value="将.h的路径改为相对路径，在uvision中完成编译烧录" />
   </component>
 </project>

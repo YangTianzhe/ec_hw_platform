@@ -13,6 +13,8 @@ extern UART_HandleTypeDef huart1;
 
 void RemoteControlInit(void)
 {
+    HAL_UART_MspInit(&huart1);
+    HAL_UART_MspInit(&huart3);
     HAL_UARTEx_ReceiveToIdle_DMA(&huart3,(uint8_t*) sbus_rx_buffer,RC_FRAME_LENGTH);
 }
 

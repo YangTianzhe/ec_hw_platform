@@ -34,11 +34,13 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     }
     if(huart->Instance==USART1) //UART2 1000000bps
     {
-        ;
+        static uint8_t x=0; //随便写点，防止被优化
+        x++;
     }
     if(huart->Instance==USART6) //UART1 115200bps
     {
-        ;
+        static uint8_t y=0;
+        y++;
     }
 }
 
