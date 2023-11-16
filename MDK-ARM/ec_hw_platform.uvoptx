@@ -153,8 +153,8 @@
           <Number>0</Number>
           <Type>0</Type>
           <LineNumber>29</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134228458</Address>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134228460</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -169,8 +169,8 @@
           <Number>1</Number>
           <Type>0</Type>
           <LineNumber>273</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134235160</Address>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134235364</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -223,12 +223,7 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>huart-&gt;Instance</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>USART3</ItemText>
+          <ItemText>RC_CtrlData</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

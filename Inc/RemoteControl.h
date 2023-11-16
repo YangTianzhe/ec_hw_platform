@@ -5,14 +5,21 @@
 #ifndef EC_HW_PLATFORM_REMOTECONTROL_H
 #define EC_HW_PLATFORM_REMOTECONTROL_H
 
-/* ----------------------- RC Channel Definition---------------------------- */
-#define RC_CH_VALUE_MIN ((uint16_t)364)
-#define RC_CH_VALUE_OFFSET ((uint16_t)1024)
-#define RC_CH_VALUE_MAX ((uint16_t)1684)
-/* ----------------------- RC Switch Definition----------------------------- */
-#define RC_SW_UP ((uint16_t)1)
-#define RC_SW_MID ((uint16_t)3)
-#define RC_SW_DOWN ((uint16_t)2)
+
+#define RC_CH_VALUE_ZERO  (1024)
+#define RC_CH_VALUE_RANGE (660)
+
+#define RC_MOUSE_VALUE_ZERO  (0)
+#define RC_MOUSE_VALUE_RANGE (32768)
+
+typedef enum
+{
+    RC_SW_UP=1,
+    RC_SW_MID=3,
+    RC_SW_DOWN=2
+}RCSwitchValueType;
+
+
 /* ----------------------- PC Key Definition-------------------------------- */
 #define KEY_PRESSED_OFFSET_W ((uint16_t)0x01<<0)
 #define KEY_PRESSED_OFFSET_S ((uint16_t)0x01<<1)
@@ -29,18 +36,18 @@ typedef struct
 {
     struct
     {
-        uint16_t ch0;
-        uint16_t ch1;
-        uint16_t ch2;
-        uint16_t ch3;
-        uint8_t s1;
-        uint8_t s2;
+        float ch0;  //右摇杆 横
+        float ch1;  //右摇杆 纵
+        float ch2;  //左摇杆 横
+        float ch3;  //左摇杆 纵
+        RCSwitchValueType s1;   //左开关位
+        RCSwitchValueType s2;   //右开关位
     }rc;
     struct
     {
-        int16_t x;
-        int16_t y;
-        int16_t z;
+        float x;
+        float y;
+        float z;
         uint8_t press_l;
         uint8_t press_r;
     }mouse;

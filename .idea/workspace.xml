@@ -20,29 +20,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="将.h的路径改为相对路径，在uvision中完成编译烧录">
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="基本上完成了遥控器部分">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists - 副本.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists - 副本.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/iwdg.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_hal_conf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/iwdg.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/usart.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_iwdg.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/RemoteControl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/RemoteControl.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/RemoteControl.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/RemoteControl.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ec_hw_platform.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/ec_hw_platform.ioc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +41,11 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="b5ad1e75fb5f748681cdd4534169055d8154e967" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -164,7 +156,7 @@
       <workItem from="1700109678152" duration="299000" />
       <workItem from="1700110073390" duration="2180000" />
       <workItem from="1700114904495" duration="4121000" />
-      <workItem from="1700144020768" duration="4518000" />
+      <workItem from="1700144020768" duration="7290000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -230,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700119712860</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="基本上完成了遥控器部分">
+      <option name="closed" value="true" />
+      <created>1700149201330</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700149201330</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +262,7 @@
     <MESSAGE value="增加了MainControlLoop框架，但还未写具体代码" />
     <MESSAGE value="写完了遥控部分的代码，但是还未进行测试。" />
     <MESSAGE value="将.h的路径改为相对路径，在uvision中完成编译烧录" />
-    <option name="LAST_COMMIT_MESSAGE" value="将.h的路径改为相对路径，在uvision中完成编译烧录" />
+    <MESSAGE value="基本上完成了遥控器部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本上完成了遥控器部分" />
   </component>
 </project>
