@@ -64,6 +64,7 @@ add_link_options(-T ${LINKER_SCRIPT})
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT}
         Src/Callback.c
         Src/MainControlLoop.c
+        Src/Motor.cpp
         Src/my_CAN.c
         Src/my_Math.c
         Src/PID.cpp

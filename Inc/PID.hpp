@@ -8,11 +8,13 @@
 class PID
 {
 public:
+    PID();
+    PID(const PID& pid);
     PID(float kp, float ki, float kd, float i_max, float out_max);
 
-    float Calculate(float ref, float fdb);
+    float Calculate(float ref, float fdb);//目标，当前
 
-private:
+public:
     float kp_, ki_, kd_;
     float i_max_, out_max_;//积分限幅,输出限幅
     float output_;
