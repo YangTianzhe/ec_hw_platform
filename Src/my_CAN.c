@@ -3,7 +3,7 @@
 //
 
 #include "main.h"
-#include "../Inc/my_can.h"
+#include "../Inc/my_CAN.h"
 
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;

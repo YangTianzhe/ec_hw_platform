@@ -2,7 +2,7 @@
 // Created by ytz20 on 2023/11/18.
 //
 
-#include "../Inc/my_math.h"
+#include "../Inc/my_Math.h"
 #include <math.h>
 
 /**

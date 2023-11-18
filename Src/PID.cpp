@@ -2,8 +2,8 @@
 // Created by ytz20 on 2023/11/18.
 //
 
-#include "../Inc/pid.hpp"
-#include "../Inc/my_math.h"
+#include "../Inc/PID.hpp"
+#include "../Inc/my_Math.h"
 
 PID::PID(float kp, float ki, float kd, float i_max, float out_max)
 {

@@ -20,10 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成常用数学函数(my_math)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-    </list>
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成PID类" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +148,7 @@
       <workItem from="1700114904495" duration="4121000" />
       <workItem from="1700144020768" duration="7339000" />
       <workItem from="1700309257228" duration="1901000" />
-      <workItem from="1700313708290" duration="2550000" />
+      <workItem from="1700313708290" duration="2876000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -241,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700315639348</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="完成PID类">
+      <option name="closed" value="true" />
+      <created>1700316599377</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700316599377</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +281,8 @@
     <MESSAGE value="基本上完成了遥控器部分" />
     <MESSAGE value="完成了遥控器数据的归一化" />
     <MESSAGE value="完成常用数学函数(my_math)" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成常用数学函数(my_math)" />
+    <MESSAGE value="完成PID类" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成PID类" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -64,9 +64,9 @@ add_link_options(-T ${LINKER_SCRIPT})
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT}
         Src/Callback.c
         Src/MainControlLoop.c
-        Src/my_can.c
-        Src/my_math.c
-        Src/pid.cpp
+        Src/my_CAN.c
+        Src/my_Math.c
+        Src/PID.cpp
         Src/RemoteControl.c)
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
