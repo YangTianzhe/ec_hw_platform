@@ -9,7 +9,6 @@ class PID
 {
 public:
     PID();
-    PID(const PID& pid);
     PID(float kp, float ki, float kd, float i_max, float out_max);
 
     float Calculate(float ref, float fdb);//目标，当前

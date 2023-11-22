@@ -5,6 +5,10 @@
 #ifndef EC_HW_PLATFORM_MY_MATH_H
 #define EC_HW_PLATFORM_MY_MATH_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 float Limit(float val, float min, float max);
 float LoopLimit(float val, float min, float max);
 float DeadBand(float val, float min, float max);
@@ -19,5 +23,9 @@ float rpm2radps(float rpm);
 float radps2rpm(float radps);
 float dps2radps(float dps);
 float radps2dps(float radps);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //EC_HW_PLATFORM_MY_MATH_H

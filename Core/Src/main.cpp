@@ -30,6 +30,7 @@
 /* USER CODE BEGIN Includes */
 #include "../../Inc/my_CAN.h"
 #include "../../Inc/RemoteControl.h"
+#include "../../Inc/Motor.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,7 +62,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+PID spid={1,1,1,1,1};
+PID ppid={1,1,1,1,1};
 
+Motor motor1={Motor::Type::M2006,36,Motor::ControlMethod::POSITION_SPEED,ppid,spid};
 /* USER CODE END 0 */
 
 /**

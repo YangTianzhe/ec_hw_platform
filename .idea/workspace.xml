@@ -20,12 +20,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="改个文件名大小写">
-      <change afterPath="$PROJECT_DIR$/Inc/Motor.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Src/Motor.cpp" afterDir="false" />
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成了电机类">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/Motor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/Motor.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inc/PID.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/PID.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/RemoteControl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/RemoteControl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/my_CAN.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_CAN.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/my_Math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_Math.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/MainControlLoop.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/MainControlLoop.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Motor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Motor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/PID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PID.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,6 +107,11 @@
   }
 }</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.STlink ec_hw_platform.elf">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ec_hw_platform.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ec_hw_platform" TARGET_NAME="ec_hw_platform.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ec_hw_platform" RUN_TARGET_NAME="ec_hw_platform.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -157,7 +168,10 @@
       <workItem from="1700144020768" duration="7339000" />
       <workItem from="1700309257228" duration="1901000" />
       <workItem from="1700313708290" duration="8415000" />
-      <workItem from="1700322187983" duration="1000" />
+      <workItem from="1700322187983" duration="1095000" />
+      <workItem from="1700611937765" duration="7644000" />
+      <workItem from="1700640124552" duration="1143000" />
+      <workItem from="1700666329980" duration="4041000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -263,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700316917389</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="完成了电机类">
+      <option name="closed" value="true" />
+      <created>1700323212453</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700323212453</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +322,8 @@
     <MESSAGE value="完成常用数学函数(my_math)" />
     <MESSAGE value="完成PID类" />
     <MESSAGE value="改个文件名大小写" />
-    <option name="LAST_COMMIT_MESSAGE" value="改个文件名大小写" />
+    <MESSAGE value="完成了电机类" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了电机类" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

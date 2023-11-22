@@ -3,7 +3,8 @@
 //
 
 #include "../Inc/Motor.hpp"
-#include <math.h>
+#include <cmath>
+#include "../Inc/my_Math.h"
 
 
 Motor::Motor(const Type& type, const float& ratio, const ControlMethod& method,
@@ -25,24 +26,30 @@ void Motor::Reset() // 重置电机所有状态
 }
 void Motor::Handle() // 根据当前 mode_ 计算控制量
 {
-    if(mode_==Mode::WORKING)// 电机正常工作
-    {
-        motor_data_.angle=motor_data_.ecd_angle/info_.ratio; //减速比为编码器角度/输出角度
-        if(method_==ControlMethod::POSITION_SPEED) //双环控制，计算位置PID
-            target_speed_=ppid_.Calculate(target_angle_,motor_data_.angle);
-        intensity_=round(spid_.Calculate(target_speed_,motor_data_.rotate_speed)*1000);
-          //电调接受控制量-10000~10000，对应电流-10A~10A
-    }
-    if(mode_==Mode::STOP)// 将目标速度置零，计算得出控制量，使得电机停转
-    {
-        SetSpeed(0.0);
-        intensity_=round(spid_.Calculate(target_speed_,motor_data_.rotate_speed)*1000);
-          //电调接受控制量-10000~10000，对应电流-10A~10A
-    }
     if(mode_==Mode::POWER_OFF)// 断电，控制量置零
     {
         intensity_=0;
+        return;
     }
+    if(mode_==Mode::WORKING)// 电机正常工作
+    {
+        motor_data_.angle = motor_data_.ecd_angle / info_.ratio; //减速比为编码器角度/输出角度
+        if (method_ == ControlMethod::POSITION_SPEED) //双环控制，计算位置PID
+            target_speed_ = ppid_.Calculate(target_angle_, motor_data_.angle);
+    }
+    else if(mode_==Mode::STOP)// 将目标速度置零，计算得出控制量，使得电机停转
+    {
+        target_speed_=0.0;
+    }
+    if(info_.type==Type::M3508) //C620电调
+        intensity_=(int16_t)round(spid_.Calculate(target_speed_,motor_data_.rotate_speed)/10*10000);
+        //电调接受控制量-10000~10000，对应电流-10A~10A
+    else if(info_.type==Type::M2006) //C610电调
+        intensity_=(int16_t)round(spid_.Calculate(target_speed_,motor_data_.rotate_speed)/20*16384);
+        //电调接受控制量-16384~16384，对应电流-20A~20A
+    else if(info_.type==Type::GM6020)
+        intensity_=(int16_t)round(spid_.Calculate(target_speed_,motor_data_.rotate_speed)/24*30000);
+        //电调接受控制量-30000~30000，对应电压-24V~24V
 }
 void Motor::SetAngle(const float& target_angle) // 设置目标角度
 {
@@ -51,4 +58,73 @@ void Motor::SetAngle(const float& target_angle) // 设置目标角度
 void Motor::SetSpeed(const float& target_speed) // 设置目标速度
 {
     target_speed_=target_speed;
+}
+
+
+
+extern Motor motor1;
+static uint16_t montor_Tx_message[4];
+static CAN_TxHeaderTypeDef montor_Tx_header;
+static uint32_t TxMailbox0=CAN_TX_MAILBOX0;
+static uint32_t TxMailbox1=CAN_TX_MAILBOX1;
+
+extern CAN_HandleTypeDef hcan1;
+extern CAN_HandleTypeDef hcan2;
+
+
+void MotorControlCANTx(void)
+{
+    montor_Tx_message[0]=(uint16_t)(motor1.intensity_);
+    montor_Tx_message[1]=0;
+    montor_Tx_message[2]=0;
+    montor_Tx_message[3]=0;
+
+    montor_Tx_header={0x200,0,CAN_ID_STD,CAN_RTR_DATA,8,DISABLE};
+    HAL_CAN_AddTxMessage(&hcan1,&montor_Tx_header,(uint8_t*)montor_Tx_message,&TxMailbox0);
+
+/*
+    montor_Tx_message[0]=(uint16_t)(motor[4].intensity_);
+    montor_Tx_message[1]=(uint16_t)(motor[5].intensity_);
+    montor_Tx_message[2]=(uint16_t)(motor[6].intensity_);
+    montor_Tx_message[3]=(uint16_t)(motor[7].intensity_);
+
+    montor_Tx_header={0x1FF,0,CAN_ID_STD,CAN_RTR_DATA,8,DISABLE};
+    HAL_CAN_AddTxMessage(&hcan1,&montor_Tx_header,(uint8_t*)montor_Tx_message,&TxMailbox1);
+*/
+}
+
+void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,uint16_t *rx_data)
+{
+    if(rx_header->StdId < 0x201 || rx_header->StdId > 0x20B) //不是DJI电机数据包
+        return;
+    //uint16_t motor_index=rx_header->StdId - 0x201;
+    if(motor1.info_.type==Motor::Type::M3508)
+        //M3508最大空载转速为589rpm，在一个CAN周期中最多转动589rpm*1ms=3.534度
+    {
+        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
+        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
+        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
+        //motor[motor_id].motor_data_.       =rx_data[2];
+    }
+    else if(motor1.info_.type==Motor::Type::M2006)
+        //M2006最大空载转速为777rpm，在一个CAN周期中最多转动777rpm*1ms=4.662度
+    {
+        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
+        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
+        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
+        //motor[motor_id].motor_data_.       =rx_data[2];
+        motor1.motor_data_.temp=(float)((uint16_t)rx_data[3]>>8);
+    }
+    else if(motor1.info_.type==Motor::Type::GM6020)
+        //GM6020最大空载转速为320rpm，在一个CAN周期中最多转动320rpm*1ms=1.92度
+    {
+        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
+        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
+        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
+        //motor[motor_id].motor_data_.       =rx_data[2];
+        motor1.motor_data_.temp=(float)((uint16_t)rx_data[3]>>8);
+    }
 }

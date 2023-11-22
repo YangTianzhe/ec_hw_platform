@@ -37,20 +37,24 @@ public:
     struct MotorInfo {
         Type type;
         float ratio; // 减速比
+        //M2006减速比为36:1
     } info_;
     Mode mode_;
     ControlMethod method_;
     int16_t intensity_; // 控制量
     float target_angle_, target_speed_; // 期望角度、速度
     struct MotorData {
-        float angle; // 减速后的输出端角度
-        float ecd_angle; // 编码器角度
+        float angle; // 减速后的输出端角度 [度]
+        float ecd_angle; // 编码器角度   [度]
         float last_ecd_angle;
-        float rotate_speed; // 减速后的输出端转速
+        float rotate_speed; // 减速后的输出端转速 [rpm]
         float current; // 转矩电流
         float temp; // 电机温度
     } motor_data_;
     PID ppid_, spid_;
 };
+
+void MotorControlCANTx(void);
+void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,uint16_t *rx_data);
 
 #endif //PROJECT_MOTOR_HPP

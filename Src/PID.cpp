@@ -5,17 +5,7 @@
 #include "../Inc/PID.hpp"
 #include "../Inc/my_Math.h"
 
-
-PID::PID(const PID& pid)
-{
-    kp_=pid.kp_;
-    ki_=pid.ki_;
-    kd_=pid.kd_;
-    i_max_=pid.i_max_;
-    out_max_=pid.out_max_;
-
-    output_=0.0;ref_=0.0;fdb_=0.0;err_=0.0;err_sum_=0.0;last_err_=0.0;pout_=0.0;iout_=0.0;dout_=0.0;
-}
+PID::PID(){}
 
 PID::PID(float kp, float ki, float kd, float i_max, float out_max)
 {

@@ -5,6 +5,9 @@
 #ifndef EC_HW_PLATFORM_REMOTECONTROL_H
 #define EC_HW_PLATFORM_REMOTECONTROL_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #define RC_CH_VALUE_ZERO  (1024)
 #define RC_CH_VALUE_RANGE (660)
@@ -62,5 +65,8 @@ void RemoteControlInit(void);
 void RemoteControlDataReceive(void);
 void RemoteControlDataUtilize(void);
 
+#ifdef __cplusplus
+};
+#endif
 
 #endif //EC_HW_PLATFORM_REMOTECONTROL_H
