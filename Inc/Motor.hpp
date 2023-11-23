@@ -55,6 +55,6 @@ public:
 };
 
 void MotorControlCANTx(void);
-void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,uint16_t *rx_data);
+void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,const uint8_t *rx_data);
 
 #endif //PROJECT_MOTOR_HPP

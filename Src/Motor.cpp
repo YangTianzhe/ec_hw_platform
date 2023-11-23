@@ -110,7 +110,7 @@ void MotorControlCANTx(void)
 */
 }
 
-void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,uint16_t *rx_data)
+void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_header,const uint8_t *rx_data)
 {
     if(rx_header->StdId < 0x201 || rx_header->StdId > 0x20B) //不是DJI电机数据包
         return;
@@ -119,29 +119,26 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
         //M3508最大空载转速为589rpm，在一个CAN周期中最多转动589rpm*1ms=3.534度
     {
         motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
         motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
-        //motor[motor_id].motor_data_.       =rx_data[2];
+        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
     }
     else if(motor1.info_.type==Motor::M2006)
         //M2006最大空载转速为777rpm，在一个CAN周期中最多转动777rpm*1ms=4.662度
     {
         motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
         motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
-        //motor[motor_id].motor_data_.       =rx_data[2];
-        motor1.motor_data_.temp=(float)((uint16_t)rx_data[3]>>8);
+        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+        motor1.motor_data_.temp=(float)rx_data[6];
     }
     else if(motor1.info_.type==Motor::GM6020)
         //GM6020最大空载转速为320rpm，在一个CAN周期中最多转动320rpm*1ms=1.92度
     {
         motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree(rx_data[0],8192);
+        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
         motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=rx_data[1]/motor1.info_.ratio;
-        //motor[motor_id].motor_data_.       =rx_data[2];
-        motor1.motor_data_.temp=(float)((uint16_t)rx_data[3]>>8);
+        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+        motor1.motor_data_.temp=(float)rx_data[6];
     }
 }
