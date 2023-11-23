@@ -122,6 +122,7 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
         motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
         motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
         motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+        motor1.motor_data_.temp=(float)rx_data[6];
     }
     else if(motor1.info_.type==Motor::M2006)
         //M2006最大空载转速为777rpm，在一个CAN周期中最多转动777rpm*1ms=4.662度
@@ -130,7 +131,6 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
         motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
         motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
         motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
-        motor1.motor_data_.temp=(float)rx_data[6];
     }
     else if(motor1.info_.type==Motor::GM6020)
         //GM6020最大空载转速为320rpm，在一个CAN周期中最多转动320rpm*1ms=1.92度
