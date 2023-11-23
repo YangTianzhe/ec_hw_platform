@@ -77,7 +77,7 @@ void Motor::SetSpeed(const float& target_speed) // 设置目标速度
 
 
 extern Motor motor1;
-static uint16_t montor_Tx_message[4];
+static uint8_t montor_Tx_message[8];
 static CAN_TxHeaderTypeDef montor_Tx_header;
 static uint32_t TxMailbox0=CAN_TX_MAILBOX0;
 static uint32_t TxMailbox1=CAN_TX_MAILBOX1;
@@ -88,10 +88,14 @@ extern CAN_HandleTypeDef hcan2;
 
 void MotorControlCANTx(void)
 {
-    montor_Tx_message[0]=(uint16_t)(motor1.intensity_);
-    montor_Tx_message[1]=0;
+    montor_Tx_message[0]=(uint8_t)((uint16_t)motor1.intensity_>>8);
+    montor_Tx_message[1]=(uint8_t)((uint16_t)motor1.intensity_&0xFF);
     montor_Tx_message[2]=0;
     montor_Tx_message[3]=0;
+    montor_Tx_message[4]=0;
+    montor_Tx_message[5]=0;
+    montor_Tx_message[6]=0;
+    montor_Tx_message[7]=0;
 
     montor_Tx_header.StdId=0x200;
     montor_Tx_header.ExtId=0;
@@ -99,7 +103,7 @@ void MotorControlCANTx(void)
     montor_Tx_header.RTR=CAN_RTR_DATA;
     montor_Tx_header.DLC=8;
     montor_Tx_header.TransmitGlobalTime=DISABLE;
-    HAL_CAN_AddTxMessage(&hcan1,&montor_Tx_header,(uint8_t*)montor_Tx_message,&TxMailbox0);
+    HAL_CAN_AddTxMessage(&hcan1,&montor_Tx_header,montor_Tx_message,&TxMailbox0);
 
 /*
     montor_Tx_message[0]=(uint16_t)(motor[4].intensity_);
