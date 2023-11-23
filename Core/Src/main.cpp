@@ -65,7 +65,7 @@ void SystemClock_Config(void);
 PID spid=PID(1,1,1,1,1);
 PID ppid=PID(1,1,1,1,1);
 
-Motor motor1=Motor(Motor::M2006,36,Motor::POSITION_SPEED,ppid,spid);
+Motor motor1=Motor(Motor::M2006,36,Motor::SPEED,ppid,spid);
 /* USER CODE END 0 */
 
 /**
@@ -110,7 +110,7 @@ int main(void)
   MX_USART6_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim6);
   canFilterInit();
   RemoteControlInit();
   /* USER CODE END 2 */
