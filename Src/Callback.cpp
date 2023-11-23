@@ -45,7 +45,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
         y++;
     }
 }
-static uint8_t montor_Rx_message[4];
+uint8_t montor_Rx_message[8];
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
     CAN_RxHeaderTypeDef rx_header;
