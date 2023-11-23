@@ -44,6 +44,7 @@ public:
     int16_t intensity_; // 控制量
     float target_angle_, target_speed_; // 期望角度、速度
     struct MotorData {
+        float angle_cycle_count; //编码器累计转过的整圈数对应的输出端角度
         float angle; // 减速后的输出端角度 [度]
         float ecd_angle; // 编码器角度   [度]
         float last_ecd_angle;

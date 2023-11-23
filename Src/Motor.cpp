@@ -17,6 +17,7 @@ Motor::Motor(const Type& type, const float& ratio, const ControlMethod& method,
     intensity_=0;
     target_angle_=0;
     target_speed_=0;
+    motor_data_.angle_cycle_count=0.0;
     motor_data_.angle=0.0;
     motor_data_.ecd_angle=0.0;
     motor_data_.last_ecd_angle=0.0;
@@ -29,6 +30,7 @@ Motor::Motor(const Type& type, const float& ratio, const ControlMethod& method,
 }
 void Motor::Reset() // 重置电机所有状态
 {
+    motor_data_.angle_cycle_count=0.0;
     motor_data_.angle=0.0;
     motor_data_.ecd_angle=0.0;
     motor_data_.last_ecd_angle=0.0;
@@ -115,30 +117,27 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
     if(rx_header->StdId < 0x201 || rx_header->StdId > 0x20B) //不是DJI电机数据包
         return;
     //uint16_t motor_index=rx_header->StdId - 0x201;
-    if(motor1.info_.type==Motor::M3508)
-        //M3508最大空载转速为589rpm，在一个CAN周期中最多转动589rpm*1ms=3.534度
+
+    //M3508最大空载转速为589rpm，在一个CAN周期中最多转动589rpm*1ms=3.534度
+    //M2006最大空载转速为777rpm，在一个CAN周期中最多转动777rpm*1ms=4.662度
+    //GM6020最大空载转速为320rpm，在一个CAN周期中最多转动320rpm*1ms=1.92度
+    motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
+    motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
+    if(motor1.motor_data_.ecd_angle-motor1.motor_data_.last_ecd_angle>180) //0跳到360
     {
-        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
-        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
-        motor1.motor_data_.temp=(float)rx_data[6];
+        motor1.motor_data_.angle_cycle_count -= 360 / motor1.info_.ratio;
+        if(motor1.motor_data_.angle_cycle_count<0)
+            motor1.motor_data_.angle_cycle_count+=360; //输出端也有360度的周期截断
     }
-    else if(motor1.info_.type==Motor::M2006)
-        //M2006最大空载转速为777rpm，在一个CAN周期中最多转动777rpm*1ms=4.662度
+    else if(motor1.motor_data_.last_ecd_angle-motor1.motor_data_.ecd_angle>180) //360跳到0
     {
-        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
-        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+        motor1.motor_data_.angle_cycle_count += 360 / motor1.info_.ratio;
+        if(motor1.motor_data_.angle_cycle_count>360)
+            motor1.motor_data_.angle_cycle_count-=360; //输出端也有360度的周期截断
     }
-    else if(motor1.info_.type==Motor::GM6020)
-        //GM6020最大空载转速为320rpm，在一个CAN周期中最多转动320rpm*1ms=1.92度
-    {
-        motor1.motor_data_.last_ecd_angle=motor1.motor_data_.ecd_angle;
-        motor1.motor_data_.ecd_angle=Encoder2Degree((float)((uint16_t)rx_data[0]<<8|(uint16_t)rx_data[1]),8192);
-        motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio;
-        motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
-        motor1.motor_data_.temp=(float)rx_data[6];
-    }
+    motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio+motor1.motor_data_.angle_cycle_count;
+    if(motor1.motor_data_.angle>360)
+        motor1.motor_data_.angle-=360; //输出端也有360度的周期截断
+    motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+    motor1.motor_data_.temp=(float)rx_data[6];
 }
