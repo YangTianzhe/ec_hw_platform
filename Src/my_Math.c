@@ -3,7 +3,6 @@
 //
 
 #include "../Inc/my_Math.h"
-#include <math.h>
 
 /**
  * @brief 限幅：输入小于下限，则输出下限。若输入大于上限，则输出上限
@@ -60,7 +59,7 @@ float DeadBand(float val, float min, float max)
  */
 float Deg2Rad(float degree)
 {
-    return degree/180*M_PI;
+    return degree/180*MY_PI;
 }
 
 /**
@@ -70,7 +69,7 @@ float Deg2Rad(float degree)
  */
 float Rad2Deg(float radian)
 {
-    return radian/M_PI*180;
+    return radian/MY_PI*180;
 }
 
 /**
@@ -113,8 +112,8 @@ float dps2rpm(float dps)
  */
 float rpm2radps(float rpm)
 {
-    //return rpm*(2*M_PI)/60;
-    return rpm*M_PI/30;
+    //return rpm*(2*MY_PI)/60;
+    return rpm*MY_PI/30;
 }
 
 /**
@@ -124,7 +123,7 @@ float rpm2radps(float rpm)
  */
 float radps2rpm(float radps)
 {
-    return radps*30/M_PI;
+    return radps*30/MY_PI;
 }
 
 /**
@@ -134,7 +133,7 @@ float radps2rpm(float radps)
  */
 float dps2radps(float dps)
 {
-    return dps/180*M_PI;
+    return dps/180*MY_PI;
 }
 
 /**
@@ -144,5 +143,5 @@ float dps2radps(float dps)
  */
 float radps2dps(float radps)
 {
-    return radps/M_PI*180;
+    return radps/MY_PI*180;
 }

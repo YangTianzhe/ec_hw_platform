@@ -9,6 +9,8 @@
 extern "C" {
 #endif
 
+#define MY_PI 3.14159265358979323846
+
 float Limit(float val, float min, float max);
 float LoopLimit(float val, float min, float max);
 float DeadBand(float val, float min, float max);
