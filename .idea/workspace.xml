@@ -20,19 +20,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成了电机类">
+    <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment=".ioc中GPIO别名改为大写">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/Motor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/Motor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/PID.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/PID.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/RemoteControl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/RemoteControl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/my_CAN.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_CAN.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/my_Math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_Math.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/MainControlLoop.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/MainControlLoop.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Motor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Motor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/PID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PID.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="b5ad1e75fb5f748681cdd4534169055d8154e967" />
+        <entry key="$PROJECT_DIR$" value="dev_motor" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -171,7 +170,12 @@
       <workItem from="1700322187983" duration="1095000" />
       <workItem from="1700611937765" duration="7644000" />
       <workItem from="1700640124552" duration="1143000" />
-      <workItem from="1700666329980" duration="4041000" />
+      <workItem from="1700666329980" duration="5089000" />
+      <workItem from="1700671697503" duration="203000" />
+      <workItem from="1700745709419" duration="9417000" />
+      <workItem from="1700757440456" duration="500000" />
+      <workItem from="1700758089530" duration="595000" />
+      <workItem from="1700925565047" duration="3170000" />
     </task>
     <task id="LOCAL-00001" summary="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复">
       <option name="closed" value="true" />
@@ -285,7 +289,111 @@
       <option name="project" value="LOCAL" />
       <updated>1700323212453</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="基本完成了电机控制部分，但是还未测试，细节之处也还存在问题">
+      <option name="closed" value="true" />
+      <created>1700670720662</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700670720662</updated>
+    </task>
+    <task id="LOCAL-00016" summary="自己宏定义PI的数值，放弃引用math.h中的定义">
+      <option name="closed" value="true" />
+      <created>1700746804213</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700746804213</updated>
+    </task>
+    <task id="LOCAL-00017" summary="将大括号形式的类初始化改为小括号形式的，修正::运算符的使用。">
+      <option name="closed" value="true" />
+      <created>1700747400034</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700747400034</updated>
+    </task>
+    <task id="LOCAL-00018" summary="修改电机回传处理函数，将uint16_t改为uint8_t">
+      <option name="closed" value="true" />
+      <created>1700749020124</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700749020124</updated>
+    </task>
+    <task id="LOCAL-00019" summary="montor_Rx_message改静态全局变量，方便调试">
+      <option name="closed" value="true" />
+      <created>1700749325666</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1700749325666</updated>
+    </task>
+    <task id="LOCAL-00020" summary="montor_Rx_message取消静态，更正长度为8">
+      <option name="closed" value="true" />
+      <created>1700749411921</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700749411921</updated>
+    </task>
+    <task id="LOCAL-00021" summary="修正可以读取温度的电机类型">
+      <option name="closed" value="true" />
+      <created>1700749637767</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1700749637767</updated>
+    </task>
+    <task id="LOCAL-00022" summary="更正angle的更新代码，考虑ecd_angle的周期性">
+      <option name="closed" value="true" />
+      <created>1700751265926</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1700751265926</updated>
+    </task>
+    <task id="LOCAL-00023" summary="修改电机控制信息发送函数，将uint16_t改为uint8_t">
+      <option name="closed" value="true" />
+      <created>1700751522256</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1700751522256</updated>
+    </task>
+    <task id="LOCAL-00024" summary="MainControlLoop中控制电机，main.cpp中启动定时器中断">
+      <option name="closed" value="true" />
+      <created>1700752720355</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1700752720355</updated>
+    </task>
+    <task id="LOCAL-00025" summary="搭建电机测试环境">
+      <option name="closed" value="true" />
+      <created>1700926621787</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1700926621787</updated>
+    </task>
+    <task id="LOCAL-00026" summary="配置SPI">
+      <option name="closed" value="true" />
+      <created>1700927021159</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700927021159</updated>
+    </task>
+    <task id="LOCAL-00027" summary=".ioc中GPIO别名改为大写">
+      <option name="closed" value="true" />
+      <created>1700928608718</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1700928608718</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,8 +417,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="重新生成代码，原代码同时包含了stm32f0和stm32f4的driver，已修复" />
-    <MESSAGE value="完成CANFilterInit" />
     <MESSAGE value="完成定时器中断" />
     <MESSAGE value="完成串口接收中断的结构搭建，待填入详细代码" />
     <MESSAGE value="完成CAN接受中断" />
@@ -323,7 +429,20 @@
     <MESSAGE value="完成PID类" />
     <MESSAGE value="改个文件名大小写" />
     <MESSAGE value="完成了电机类" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了电机类" />
+    <MESSAGE value="基本完成了电机控制部分，但是还未测试，细节之处也还存在问题" />
+    <MESSAGE value="自己宏定义PI的数值，放弃引用math.h中的定义" />
+    <MESSAGE value="将大括号形式的类初始化改为小括号形式的，修正::运算符的使用。" />
+    <MESSAGE value="修改电机回传处理函数，将uint16_t改为uint8_t" />
+    <MESSAGE value="montor_Rx_message改静态全局变量，方便调试" />
+    <MESSAGE value="montor_Rx_message取消静态，更正长度为8" />
+    <MESSAGE value="修正可以读取温度的电机类型" />
+    <MESSAGE value="更正angle的更新代码，考虑ecd_angle的周期性" />
+    <MESSAGE value="修改电机控制信息发送函数，将uint16_t改为uint8_t" />
+    <MESSAGE value="MainControlLoop中控制电机，main.cpp中启动定时器中断" />
+    <MESSAGE value="搭建电机测试环境" />
+    <MESSAGE value="配置SPI" />
+    <MESSAGE value=".ioc中GPIO别名改为大写" />
+    <option name="LAST_COMMIT_MESSAGE" value=".ioc中GPIO别名改为大写" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

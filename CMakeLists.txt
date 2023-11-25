@@ -62,6 +62,7 @@ add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT}
+        Src/BMI088.c
         Src/Callback.cpp
         Src/MainControlLoop.cpp
         Src/Motor.cpp

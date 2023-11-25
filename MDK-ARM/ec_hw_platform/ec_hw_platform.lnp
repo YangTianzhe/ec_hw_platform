@@ -1,6 +1,5 @@
 --cpu=Cortex-M4.fp.sp
 "ec_hw_platform\startup_stm32f407xx.o"
-"ec_hw_platform\main.o"
 "ec_hw_platform\gpio.o"
 "ec_hw_platform\adc.o"
 "ec_hw_platform\can.o"
@@ -10,6 +9,7 @@
 "ec_hw_platform\usart.o"
 "ec_hw_platform\stm32f4xx_it.o"
 "ec_hw_platform\stm32f4xx_hal_msp.o"
+"ec_hw_platform\main.o"
 "ec_hw_platform\stm32f4xx_hal_adc.o"
 "ec_hw_platform\stm32f4xx_hal_adc_ex.o"
 "ec_hw_platform\stm32f4xx_ll_adc.o"
@@ -34,7 +34,10 @@
 "ec_hw_platform\system_stm32f4xx.o"
 "ec_hw_platform\callback.o"
 "ec_hw_platform\maincontrolloop.o"
+"ec_hw_platform\motor.o"
 "ec_hw_platform\my_can.o"
+"ec_hw_platform\my_math.o"
+"ec_hw_platform\pid.o"
 "ec_hw_platform\remotecontrol.o"
 --strict --scatter "ec_hw_platform\ec_hw_platform.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
