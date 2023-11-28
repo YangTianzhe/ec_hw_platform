@@ -149,6 +149,6 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
     motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio+motor1.motor_data_.angle_cycle_count;
     if(motor1.motor_data_.angle>360)
         motor1.motor_data_.angle-=360; //输出端也有360度的周期截断
-    motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+    motor1.motor_data_.rotate_speed=(float)((int16_t)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3]))/motor1.info_.ratio;
     motor1.motor_data_.temp=(float)rx_data[6];
 }

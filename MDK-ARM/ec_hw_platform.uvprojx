@@ -395,11 +395,6 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/main.c</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/gpio.c</FilePath>
@@ -443,6 +438,11 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -570,19 +570,34 @@
           <GroupName>Src</GroupName>
           <Files>
             <File>
-              <FileName>Callback.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\Callback.c</FilePath>
+              <FileName>Callback.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\Callback.cpp</FilePath>
             </File>
             <File>
-              <FileName>MainControlLoop.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\MainControlLoop.c</FilePath>
+              <FileName>MainControlLoop.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\MainControlLoop.cpp</FilePath>
             </File>
             <File>
-              <FileName>my_can.c</FileName>
+              <FileName>Motor.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\Motor.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>my_CAN.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\my_can.c</FilePath>
+              <FilePath>..\Src\my_CAN.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_Math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\my_Math.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\PID.cpp</FilePath>
             </File>
             <File>
               <FileName>RemoteControl.c</FileName>

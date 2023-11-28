@@ -22,17 +22,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e9075db2-5306-4e20-a019-3023a87a608b" name="Changes" comment="完成了电机类">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/Motor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/Motor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/PID.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/PID.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/RemoteControl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/RemoteControl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/my_CAN.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_CAN.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/my_Math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/my_Math.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Callback.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Callback.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/MainControlLoop.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/MainControlLoop.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvguix.ytz20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.axf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform.lnp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/ec_hw_platform/ec_hw_platform_ec_hw_platform.dep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Motor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Motor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/PID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PID.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="b5ad1e75fb5f748681cdd4534169055d8154e967" />
+        <entry key="$PROJECT_DIR$" value="dev_motor" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,9 +106,9 @@
   }
 }</component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.STlink ec_hw_platform.elf">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="ec_hw_platform.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ec_hw_platform" TARGET_NAME="ec_hw_platform.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ec_hw_platform" RUN_TARGET_NAME="ec_hw_platform.elf">
