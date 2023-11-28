@@ -25,11 +25,15 @@ Motor::Motor(const Type& type, const float& ratio, const ControlMethod& method,
     motor_data_.current=0.0;
     motor_data_.temp=0.0;
     if(method_==Motor::POSITION_SPEED)
-        ppid_=PID(ppid.kp_,(ratio>0)?ppid.ki_:(-ppid.ki_),(ratio>0)?ppid.kd_:(-ppid.kd_),ppid.i_max_,ppid.out_max_);
-    spid_=PID(spid.kp_,(ratio>0)?spid.ki_:(-spid.ki_),(ratio>0)?spid.kd_:(-spid.kd_),spid.i_max_,spid.out_max_);
+        ppid_=PID(ppid.kp_,(info_.ratio>0)?ppid.ki_:(-ppid.ki_),(info_.ratio>0)?ppid.kd_:(-ppid.kd_),ppid.i_max_,ppid.out_max_);
+    spid_=PID(spid.kp_,(info_.ratio>0)?spid.ki_:(-spid.ki_),(info_.ratio>0)?spid.kd_:(-spid.kd_),spid.i_max_,spid.out_max_);
 }
 void Motor::Reset() // 重置电机所有状态
 {
+    mode_=Motor::WORKING;
+    intensity_=0;
+    target_angle_=0;
+    target_speed_=0;
     motor_data_.angle_cycle_count=0.0;
     motor_data_.angle=0.0;
     motor_data_.ecd_angle=0.0;
@@ -37,6 +41,9 @@ void Motor::Reset() // 重置电机所有状态
     motor_data_.rotate_speed=0.0;
     motor_data_.current=0.0;
     motor_data_.temp=0.0;
+    if(method_==Motor::POSITION_SPEED)
+        ppid_=PID(ppid_.kp_,(info_.ratio>0)?ppid_.ki_:(-ppid_.ki_),(info_.ratio>0)?ppid_.kd_:(-ppid_.kd_),ppid_.i_max_,ppid_.out_max_);
+    spid_=PID(spid_.kp_,(info_.ratio>0)?spid_.ki_:(-spid_.ki_),(info_.ratio>0)?spid_.kd_:(-spid_.kd_),spid_.i_max_,spid_.out_max_);
 }
 void Motor::Handle() // 根据当前 mode_ 计算控制量
 {
@@ -77,10 +84,10 @@ void Motor::SetSpeed(const float& target_speed) // 设置目标速度
 
 
 extern Motor motor1;
-static uint8_t montor_Tx_message[8];
+uint8_t montor_Tx_message[8];
 static CAN_TxHeaderTypeDef montor_Tx_header;
-static uint32_t TxMailbox0=CAN_TX_MAILBOX0;
-static uint32_t TxMailbox1=CAN_TX_MAILBOX1;
+static uint32_t TxMailbox0;
+static uint32_t TxMailbox1;
 
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
@@ -142,6 +149,6 @@ void MotorControlCANRx(CAN_HandleTypeDef *hcan,const CAN_RxHeaderTypeDef *rx_hea
     motor1.motor_data_.angle=motor1.motor_data_.ecd_angle/motor1.info_.ratio+motor1.motor_data_.angle_cycle_count;
     if(motor1.motor_data_.angle>360)
         motor1.motor_data_.angle-=360; //输出端也有360度的周期截断
-    motor1.motor_data_.rotate_speed=(float)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3])/motor1.info_.ratio;
+    motor1.motor_data_.rotate_speed=(float)((int16_t)((uint16_t)rx_data[2]<<8|(uint16_t)rx_data[3]))/motor1.info_.ratio;
     motor1.motor_data_.temp=(float)rx_data[6];
 }

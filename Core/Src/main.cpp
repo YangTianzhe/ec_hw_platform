@@ -62,8 +62,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-PID spid=PID(1,1,1,1,1);
-PID ppid=PID(1,1,1,1,1);
+PID spid=PID(0.01,0,0,1000,8);
+PID ppid=PID();
 
 Motor motor1=Motor(Motor::M2006,36,Motor::SPEED,ppid,spid);
 /* USER CODE END 0 */
@@ -73,7 +73,7 @@ Motor motor1=Motor(Motor::M2006,36,Motor::SPEED,ppid,spid);
   * @retval int
   */
 int main(void)
-{
+ {
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
