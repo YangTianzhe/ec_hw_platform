@@ -122,7 +122,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+      BMI088_ReadData();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

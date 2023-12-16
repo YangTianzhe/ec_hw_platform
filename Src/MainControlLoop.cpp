@@ -11,7 +11,7 @@ extern Motor motor1;
 extern RC_Ctl_t RC_CtrlData;
 
 void MainControlLoop(void)
-{
+{/*
     if(RC_CtrlData.rc.s1!=RC_SW_MID)
         motor1.Reset();
     else
@@ -19,5 +19,5 @@ void MainControlLoop(void)
     motor1.Handle();
     MotorControlCANTx();
 
-    BMI088_ReadData();
+    BMI088_ReadData();*/
 }
