@@ -33,7 +33,9 @@ static void BMI088_ReadReg_ACCEL(uint8_t reg, uint8_t *return_data, uint8_t leng
     HAL_SPI_Transmit(&hspi1,&data,1,1000);
     while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_TX); // 等待SPI发送完成
     HAL_SPI_Receive(&hspi1,return_data,1,1000); // ACCEL读取数据时舍弃首个字节
+    while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_RX); // 等待SPI接收完成
     HAL_SPI_Receive(&hspi1,return_data,length,1000);
+    while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_RX); // 等待SPI接收完成
 }
 
 static void BMI088_ReadReg_GYRO(uint8_t reg, uint8_t *return_data, uint8_t length)
@@ -44,25 +46,26 @@ static void BMI088_ReadReg_GYRO(uint8_t reg, uint8_t *return_data, uint8_t lengt
     HAL_SPI_Transmit(&hspi1,&data,1,1000);
     while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_TX); // 等待SPI发送完成
     HAL_SPI_Receive(&hspi1,return_data,length,1000);
+    while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_RX); // 等待SPI接收完成
 }
 
 static void BMI088_WriteReg(uint8_t reg, uint8_t write_data)
 {
     uint8_t data[2];
 
-    data[0]=0x7F&reg; //0x80将Bit0置0，表示写入数据
+    data[0]=0x7F&reg; // 0x80将Bit0置0，表示写入数据
     data[1]=write_data;
     HAL_SPI_Transmit(&hspi1,data,2,1000);
-    while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_TX); //等待SPI发送完成
+    while(HAL_SPI_GetState(&hspi1)==HAL_SPI_STATE_BUSY_TX); // 等待SPI发送完成
 }
 
 void BMI088_Init(void)
 {
     // Soft Reset ACCEL
-    BMI088_ACCEL_NS_H();
+    BMI088_ACCEL_NS_L();
     BMI088_WriteReg(0x7E,0xB6); // Write 0xB6 to ACC_SOFTRESET(0x7E)
     HAL_Delay(1);
-    BMI088_ACCEL_NS_L();
+    BMI088_ACCEL_NS_H();
 
     // Soft Reset GYRO
     BMI088_GYRO_NS_L();
@@ -71,33 +74,38 @@ void BMI088_Init(void)
     BMI088_GYRO_NS_H();
 
     // Switch ACCEL to Normal Mode
-    BMI088_ACCEL_NS_H();
+    BMI088_ACCEL_NS_L();
     HAL_Delay(1);
     BMI088_WriteReg(0x7D,0x04); // Write 0x04 to ACC_PWR_CTRL(0x7D)
     HAL_Delay(1);
-    BMI088_ACCEL_NS_L();
+    BMI088_ACCEL_NS_H();
 }
 
+uint8_t bmi_data[6];
 void BMI088_ReadData(void)
 {
-    //uint8_t bmi_range;
-    uint8_t bmi_data[6];
+    uint16_t range;
 
     // Read ACCEL Data
     BMI088_ACCEL_NS_L();
+    //BMI088_ReadReg_ACCEL(0x41,bmi_data,1); // Read ACC_RANGE from 0x41
+    range=6;
     BMI088_ReadReg_ACCEL(0x12,bmi_data,6); // Read ACCEL data from 0x12
     BMI088_ACCEL_NS_H();
 
-    bmi088.accel_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])));
-    bmi088.accel_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])));
-    bmi088.accel_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])));
+    bmi088.accel_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])))/32768*range;
+    bmi088.accel_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])))/32768*range;
+    bmi088.accel_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])))/32768*range;
 
     // Read GYRO Data
     BMI088_GYRO_NS_L();
+    //BMI088_ReadReg_GYRO(0x0F,bmi_data,1); // Read GYRO_RANGE from 0x0F
+    //range=((uint8_t)125)<<(4-bmi_data[0]);
+    range=2000;
     BMI088_ReadReg_GYRO(0x02,bmi_data,6); // Read GYRO data from 0x02
     BMI088_GYRO_NS_H();
 
-    bmi088.gyro_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])));
-    bmi088.gyro_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])));
-    bmi088.gyro_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])));
+    bmi088.gyro_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])))/32768*range;
+    bmi088.gyro_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])))/32768*range;
+    bmi088.gyro_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])))/32768*range;
 }
