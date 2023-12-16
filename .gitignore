@@ -87,5 +87,7 @@ Mkfile.old
 dkms.conf
 
 cmake*/
-
+.idea/
+MDK-ARM/
+*.ld
 *.pdf

@@ -31,6 +31,7 @@
 #include "../../Inc/my_CAN.h"
 #include "../../Inc/RemoteControl.h"
 #include "../../Inc/Motor.hpp"
+#include "../../Inc/BMI088.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,7 +74,7 @@ Motor motor1=Motor(Motor::M2006,36,Motor::SPEED,ppid,spid);
   * @retval int
   */
 int main(void)
- {
+{
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -113,6 +114,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
   canFilterInit();
   RemoteControlInit();
+  BMI088_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */

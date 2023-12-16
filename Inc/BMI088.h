@@ -11,12 +11,26 @@ extern "C" {
 
 #include "main.h"
 
+typedef  struct
+{
+    float accel_x;
+    float accel_y;
+    float accel_z;
+    float gyro_x;
+    float gyro_y;
+    float gyro_z;
+}BMI088_DATA_TYPE;
+
 void BMI088_ACCEL_NS_L(void);
 void BMI088_ACCEL_NS_H(void);
 void BMI088_GYRO_NS_L(void);
 void BMI088_GYRO_NS_H(void);
-static void BMI088_read_single_reg(uint8_t reg, uint8_t *return_data);
-uint8_t BMI088_read_write_byte(uint8_t txdata);
+static void BMI088_ReadReg_ACCEL(uint8_t reg, uint8_t *return_data, uint8_t length);
+static void BMI088_ReadReg_GYRO(uint8_t reg, uint8_t *return_data, uint8_t length);
+static void BMI088_WriteReg(uint8_t reg, uint8_t write_data);
+
+void BMI088_Init(void);
+void BMI088_ReadData(void);
 
 #ifdef __cplusplus
 }
