@@ -88,7 +88,21 @@ void BMI088_ReadData(void)
 
     // Read ACCEL Data
     BMI088_ACCEL_NS_L();
-    bmi_range=6;
+    BMI088_ReadReg_ACCEL(0x22,bmi_data,2); // Read ACCEL temperature from 0x22
+    BMI088_ACCEL_NS_H();
+    bmi_range=((uint16_t)bmi_data[1])>>5|((uint16_t)bmi_data[0]<<3); // 重载一下
+    if(bmi_range>1023)
+        bmi088.temperature=(float)(bmi_range-2048);
+    else
+        bmi088.temperature=(float)(bmi_range);
+
+    BMI088_ACCEL_NS_L();
+    BMI088_ReadReg_ACCEL(0x41,bmi_data,1); // Read ACCEL range from 0x41
+    BMI088_ACCEL_NS_H();
+    bmi_range=((uint16_t)3)<<(bmi_data[0]&0x3);
+    //bmi_range=6;
+
+    BMI088_ACCEL_NS_L();
     BMI088_ReadReg_ACCEL(0x12,bmi_data,6); // Read ACCEL data from 0x12
     BMI088_ACCEL_NS_H();
 
@@ -98,7 +112,12 @@ void BMI088_ReadData(void)
 
     // Read GYRO Data
     BMI088_GYRO_NS_L();
-    bmi_range=2000;
+    BMI088_ReadReg_GYRO(0x0F,bmi_data,1); // Read GYRO_RANGE from 0x0F
+    BMI088_GYRO_NS_H();
+    bmi_range=((uint16_t)125)<<(4-bmi_data[0]);
+    //bmi_range=2000;
+
+    BMI088_GYRO_NS_L();
     BMI088_ReadReg_GYRO(0x02,bmi_data,6); // Read GYRO data from 0x02
     BMI088_GYRO_NS_H();
 
