@@ -78,26 +78,30 @@ void BMI088_Init(void)
     BMI088_ACCEL_NS_L();
 }
 
+uint8_t bmi_range;
+uint8_t bmi_data[6];
+
 void BMI088_ReadData(void)
 {
-    //uint8_t bmi_range;
-    uint8_t bmi_data[6];
+
 
     // Read ACCEL Data
     BMI088_ACCEL_NS_L();
+    BMI088_ReadReg_ACCEL(0x41,&bmi_range,1); // Read ACC_RANGE from 0x41
     BMI088_ReadReg_ACCEL(0x12,bmi_data,6); // Read ACCEL data from 0x12
     BMI088_ACCEL_NS_H();
 
-    bmi088.accel_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])));
-    bmi088.accel_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])));
-    bmi088.accel_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])));
+    bmi088.accel_x=((float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0]))))/32768*((uint8_t)3<<bmi_range);
+    bmi088.accel_y=((float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2]))))/32768*((uint8_t)3<<bmi_range);
+    bmi088.accel_z=((float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4]))))/32768*((uint8_t)3<<bmi_range);
 
     // Read GYRO Data
     BMI088_GYRO_NS_L();
+    BMI088_ReadReg_ACCEL(0x0F,&bmi_range,1); // Read ACC_RANGE from 0x0F
     BMI088_ReadReg_GYRO(0x02,bmi_data,6); // Read GYRO data from 0x02
     BMI088_GYRO_NS_H();
 
-    bmi088.gyro_x=(float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0])));
-    bmi088.gyro_y=(float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2])));
-    bmi088.gyro_z=(float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4])));
+    bmi088.gyro_x=((float)((int16_t)(((uint16_t)bmi_data[1])<<8|((uint16_t)bmi_data[0]))))/32768*((uint8_t)125<<(4-bmi_range));
+    bmi088.gyro_y=((float)((int16_t)(((uint16_t)bmi_data[3])<<8|((uint16_t)bmi_data[2]))))/32768*((uint8_t)125<<(4-bmi_range));
+    bmi088.gyro_z=((float)((int16_t)(((uint16_t)bmi_data[5])<<8|((uint16_t)bmi_data[4]))))/32768*((uint8_t)125<<(4-bmi_range));
 }

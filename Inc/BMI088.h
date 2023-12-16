@@ -13,9 +13,11 @@ extern "C" {
 
 typedef  struct
 {
+    //ACCEL 加速度计 [g]
     float accel_x;
     float accel_y;
     float accel_z;
+    //GYRO 陀螺仪 [deg/s]
     float gyro_x;
     float gyro_y;
     float gyro_z;
