@@ -111,7 +111,13 @@ int main(void)
   MX_USART6_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim4); //蜂鸣器
+  HAL_TIM_Base_Start_IT(&htim5); //LED PWM
   HAL_TIM_Base_Start_IT(&htim6);
+  //HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_3); //蜂鸣器
+  HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_1); //LED_B
+  HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_2); //LED_G
+  HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_3); //LED_R
   canFilterInit();
   RemoteControlInit();
   BMI088_Init();
@@ -121,8 +127,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    BMI088_ReadData();
     /* USER CODE END WHILE */
-      BMI088_ReadData();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
